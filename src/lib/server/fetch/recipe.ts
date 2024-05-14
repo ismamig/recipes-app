@@ -1,9 +1,18 @@
 import type { Prisma } from '@prisma/client';
 import { prisma } from '../prisma';
 
-// export const getAllRecipes = async () => {
-// 	await prisma.recipe.findMany();
-// };
+export const getAllRecipes = async () => {
+	return await prisma.recipe.findMany();
+};
+
+export const getLastRecipes = async (limit: number) => {
+	return await prisma.recipe.findMany({
+		take: limit,
+		orderBy: {
+			createdAt: 'desc'
+		}
+	});
+}
 
 // export const getRecipe = async (id: number) => {};
 

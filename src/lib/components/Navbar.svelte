@@ -16,8 +16,8 @@
         }
     ];
 
-    let currentPage = pages.find(page => page.path === $page.url.pathname);
-    let currentPageName = currentPage ? currentPage.name : '';
+    $: currentPage = pages.find(page => page.path === $page.url.pathname);
+    $: currentPageName = currentPage ? currentPage.name : '';
 </script>
 <nav class="p-4 flex flex-col gap-4">
     <div class="">

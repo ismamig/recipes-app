@@ -1,10 +1,5 @@
 import { createRecipe } from '$lib/server/fetch/recipe.js';
 
-interface Ingredient {
-	qty: string;
-	label: string;
-}
-
 export const actions = {
 	new: async (event) => {
 		const data = await event.request.formData();
