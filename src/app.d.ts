@@ -12,6 +12,19 @@ declare global {
 		// interface Platform {}
 	}
 	var prisma: PrismaClient;
+	interface Ingredient {
+		qty: string;
+		label: string;
+	};
+	interface Recipe {
+		id: number;
+		title: string;
+		people: number;
+		prepTime: number;
+		cookTime: number;
+		ingredients: Ingredient[];
+		steps: string[];
+	}
 }
 
 export {};
