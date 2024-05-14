@@ -5,7 +5,7 @@
 	let recipe: Recipe = data.recipe;
 </script>
 
-<div class="relative h-[200px] bg-center bg-cover" style="background-image: url('/food-placeholder.jpg');">
+<div class="relative h-[200px] bg-center bg-cover" style="background-image: url('/food-placeholder.webp');">
 	<!-- <img src="/food-placeholder.jpg" alt="" class="w-screen" /> -->
 	<a href="/" class="absolute top-0 letf-0 m-4 p-2 transition-all	text-white hover:text-black hover:bg-white rounded-full">
 		<svg
