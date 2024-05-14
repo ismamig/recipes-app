@@ -12,9 +12,15 @@ export const getLastRecipes = async (limit: number) => {
 			createdAt: 'desc'
 		}
 	});
-}
+};
 
-// export const getRecipe = async (id: number) => {};
+export const getRecipe = async (id: number) => {
+	return await prisma.recipe.findUnique({
+		where: {
+			id
+		}
+	});
+};
 
 export const createRecipe = async (payload: any) => {
 	await prisma.recipe.create({

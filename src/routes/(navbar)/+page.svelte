@@ -6,7 +6,7 @@
 	let recipes: Recipe[] = data.recipes || [];
 </script>
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-4 px-4">
 	<!-- <div>
 		<div class="flex flex-row justify-between items-center mb-2">
 			<h2 class="text-2xl font-bold">Dernières recettes</h2>
