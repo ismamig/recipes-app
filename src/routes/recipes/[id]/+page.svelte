@@ -6,7 +6,6 @@
 </script>
 
 <div class="relative h-[200px] bg-center bg-cover" style="background-image: url('/food-placeholder.webp');">
-	<!-- <img src="/food-placeholder.jpg" alt="" class="w-screen" /> -->
 	<a href="/" class="absolute top-0 letf-0 m-4 p-2 transition-all	text-white hover:text-black hover:bg-white rounded-full">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -26,6 +25,16 @@
 </div>
 <div class="flex flex-col gap-8 px-4 py-4 bg-white">
 	<h1 class="text-3xl font-bold">{recipe?.title}</h1>
+	<div class="flex flex-row gap-4 text-center mx-auto md:mx-0">
+		<div class="bg-blue-100 rounded-xl p-4 w-[120px]">
+			<p>Préparation</p>
+			<p class="font-bold">{recipe?.prepTime} min</p>
+		</div>
+		<div class="bg-red-100 rounded-xl p-4 w-[120px]">
+			<p>Cuisson</p>
+			<p class="font-bold">{recipe?.cookTime} min</p>
+		</div>
+	</div>
 	<div class="flex flex-col gap-2">
 		<h2 class="text-xl font-bold">Ingrédients :</h2>
 		<ul class="list-disc list-inside pl-2 flex flex-col gap-2">
