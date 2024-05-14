@@ -3,7 +3,7 @@
 	let stepsCount = 1;
 </script>
 
-<form method="POST" action="?/new" class="flex flex-col gap-4 mb-8">
+<form method="POST" action="?/new" class="flex flex-col gap-4 px-4 mb-8">
 	<div class="flex flex-col gap-2">
 		<label for="title">Nom de la recette</label>
 		<input required type="text" name="title" class="w-full p-2 border border-gray-300 rounded-lg" />

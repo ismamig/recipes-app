@@ -2,7 +2,7 @@
 	export let recipe: Recipe;
 </script>
 
-<div class="flex flex-row items-start gap-4 bg-white rounded-xl p-2 shadow-sm">
+<a href="/recipes/{recipe.id}" class="flex flex-row items-start gap-4 bg-white rounded-xl p-2 shadow-sm">
 	<img
 		src="https://via.assets.so/img.jpg?w=200&h=200&tc=blue&bg=#cecece&t=Recipe"
 		alt="Recipe"
@@ -28,4 +28,4 @@
 			<p class="pl-1">{recipe.prepTime + recipe.cookTime} min</p>
 		</div>
 	</div>
-</div>
+</a>
