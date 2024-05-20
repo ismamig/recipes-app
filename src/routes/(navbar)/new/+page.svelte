@@ -13,15 +13,15 @@
 		<input required type="number" name="people" class="w-full p-2 border border-gray-300 rounded-lg" />
 	</div>
 	<div class="flex flex-col gap-2">
-		<label for="prep-time">Temps de préparation</label>
+		<label for="prep-time">Temps de préparation <b>(min)</b></label>
 		<input required type="number" name="prepTime" class="w-full p-2 border border-gray-300 rounded-lg" />
 	</div>
 	<div class="flex flex-col gap-2">
-		<label for="cook-time">Temps de cuisson</label>
+		<label for="cook-time">Temps de cuisson <b>(min)</b></label>
 		<input required type="number" name="cookTime" class="w-full p-2 border border-gray-300 rounded-lg" />
 	</div>
 	<div class="flex flex-col gap-2">
-		<label for="ingredients">Ingrédients</label>
+		<label for="ingredients">Ingrédients <b>(quantité, nom)</b></label>
 		{#each Array.from({ length: ingredientsCount }) as _, i}
 			<div class="flex gap-2 w-full">
 				<input

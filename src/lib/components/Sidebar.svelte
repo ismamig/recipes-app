@@ -27,6 +27,7 @@
 	<nav class="flex flex-col items-center py-10 text-2xl text-black gap-4">
 		<a class="block" href="/" on:click={() => (open = !open)}>Accueil</a>
 		<a class="block" href="/recipes" on:click={() => (open = !open)}>Toutes les Recettes</a>
+		<a class="block" href="/new" on:click={() => (open = !open)}>Nouvelle Recette</a>
 	</nav>
 </aside>
 

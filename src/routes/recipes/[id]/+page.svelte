@@ -24,17 +24,21 @@
 	</a>
 </div>
 <div class="flex flex-col gap-8 px-4 py-4 bg-white">
-	<h1 class="text-3xl font-bold">{recipe?.title}</h1>
+	<div>
+		<h1 class="text-3xl font-bold">{recipe?.title}</h1>
+		<hr class="mt-4" />
+	</div>
 	<div class="flex flex-row gap-4 text-center mx-auto md:mx-0">
-		<div class="bg-blue-100 rounded-xl p-4 w-[120px]">
+		<div class="bg-blue-100 rounded-xl p-4 w-[120px] shadow-sm">
 			<p>Préparation</p>
 			<p class="font-bold">{recipe?.prepTime} min</p>
 		</div>
-		<div class="bg-red-100 rounded-xl p-4 w-[120px]">
+		<div class="bg-red-100 rounded-xl p-4 w-[120px] shadow-sm">
 			<p>Cuisson</p>
 			<p class="font-bold">{recipe?.cookTime} min</p>
 		</div>
 	</div>
+	<hr class="" />
 	<div class="flex flex-col gap-2">
 		<h2 class="text-xl font-bold">Ingrédients :</h2>
 		<ul class="list-disc list-inside pl-2 flex flex-col gap-2">
