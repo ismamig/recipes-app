@@ -1,37 +1,85 @@
 <script lang="ts">
+	import MultiSelect from '$lib/components/MultiSelect.svelte';
+	import { onMount } from 'svelte';
+
 	let ingredientsCount = 1;
 	let stepsCount = 1;
+	let selectedTags: string[] = [];
+
+	const tagOptions = [
+		{ value: '1-meat', label: 'Viande' },
+		{ value: '1-fish', label: 'Poisson' },
+		{ value: '1-veggie', label: 'Végétarien' },
+		{ value: '1-vegan', label: 'Végan' },
+		{ value: '2-starter', label: 'Entrée' },
+		{ value: '2-dish', label: 'Plat' },
+		{ value: '2-dessert', label: 'Dessert' },
+		{ value: '2-beverage', label: 'Boisson' },
+		{ value: '3-share', label: 'A partager' },
+		{ value: '3-fast', label: 'Rapide à faire' }
+	];
+
+	function handleTagChange(event) {
+		selectedTags = event.detail.selected;
+	}
 </script>
 
-<form method="POST" action="?/new" class="flex flex-col gap-4 px-4 mb-8">
+<form
+	method="POST"
+	action="?/new"
+	class="flex flex-col gap-4 px-4 mb-8"
+	on:submit={() => {
+		// Add selected tags to the form as a comma-separated string
+		const tagsInput = document.createElement('input');
+		tagsInput.type = 'hidden';
+		tagsInput.name = 'tags';
+		tagsInput.value = selectedTags.join(',');
+		event.target.appendChild(tagsInput);
+	}}
+>
 	<div class="flex flex-col gap-2">
 		<label for="title">Nom de la recette</label>
 		<input required type="text" name="title" class="w-full p-2 border border-gray-300 rounded-lg" />
 	</div>
 	<div class="flex flex-col gap-2">
 		<label for="people">Nombre de personnes</label>
-		<input required type="number" name="people" class="w-full p-2 border border-gray-300 rounded-lg" />
+		<input
+			required
+			type="number"
+			name="people"
+			class="w-full p-2 border border-gray-300 rounded-lg"
+		/>
 	</div>
 	<div class="flex flex-col gap-2">
 		<label for="prep-time">Temps de préparation <b>(min)</b></label>
-		<input required type="number" name="prepTime" class="w-full p-2 border border-gray-300 rounded-lg" />
+		<input
+			required
+			type="number"
+			name="prepTime"
+			class="w-full p-2 border border-gray-300 rounded-lg"
+		/>
 	</div>
 	<div class="flex flex-col gap-2">
 		<label for="cook-time">Temps de cuisson <b>(min)</b></label>
-		<input required type="number" name="cookTime" class="w-full p-2 border border-gray-300 rounded-lg" />
+		<input
+			required
+			type="number"
+			name="cookTime"
+			class="w-full p-2 border border-gray-300 rounded-lg"
+		/>
 	</div>
 	<div class="flex flex-col gap-2">
 		<label for="ingredients">Ingrédients <b>(quantité, nom)</b></label>
 		{#each Array.from({ length: ingredientsCount }) as _, i}
 			<div class="flex gap-2 w-full">
 				<input
-                    required
+					required
 					type="number"
 					name="ingredientQty{i}"
 					class="w-1/3 p-2 border border-gray-300 rounded-lg"
 				/>
 				<input
-                    required
+					required
 					type="text"
 					name="ingredientLabel{i}"
 					class="w-full p-2 border border-gray-300 rounded-lg"
@@ -58,7 +106,7 @@
 		{#each Array.from({ length: stepsCount }) as _, i}
 			<div class="flex gap-2 w-full">
 				<input
-                    required
+					required
 					type="text"
 					name="step{i}"
 					class="w-full p-2 border border-gray-300 rounded-lg"
@@ -75,6 +123,10 @@
 				</button>
 			{/if}
 		</div>
+	</div>
+	<div>
+		<label for="tags">Tags</label>
+		<MultiSelect options={tagOptions} bind:selected={selectedTags} on:change={handleTagChange} />
 	</div>
 	<input
 		type="submit"

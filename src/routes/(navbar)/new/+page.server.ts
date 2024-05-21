@@ -24,18 +24,20 @@ export const actions = {
 			index++;
 		}
 
+		const tags = formData.tags ? formData.tags.toString().split(',') : [];
+
         const payload = {
 					title: formData.title,
 					people: parseInt(formData.people.toString()),
 					prepTime: parseInt(formData.prepTime.toString()),
 					cookTime: parseInt(formData.cookTime.toString()),
 					ingredients,
-					steps
+					steps,
+					tags
 				};
 
-		console.log(payload);
-
         try {
+			console.log(payload.tags)
             await createRecipe(payload);
             console.log('Recipe created')
         } catch (error) {
