@@ -22,8 +22,10 @@ declare global {
 		people: number;
 		prepTime: number;
 		cookTime: number;
+		cookType: string;
 		ingredients: Ingredient[];
 		steps: string[];
+		tags: string[];
 	}
 }
 

@@ -1,12 +1,32 @@
 <script lang="ts">
+	import { getTagClass, getTagLabel, tags } from '$lib/tags';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 	let recipe: Recipe = data.recipe;
+
+	function getCookTypeIcon(cookType: string) {
+		switch (cookType) {
+			case 'FOUR':
+				return "/icons/oven.svg";
+			case 'POELE':
+				return "/icons/pan.svg";
+			case 'AUTRE':
+				return ''; // Path to another icon or leave empty
+			default:
+				return '';
+		}
+	}
 </script>
 
-<div class="relative h-[200px] bg-center bg-cover" style="background-image: url('/food-placeholder.webp');">
-	<a href="/" class="absolute top-0 letf-0 m-4 p-2 transition-all	text-white hover:text-black hover:bg-white rounded-full">
+<div
+	class="relative h-[200px] bg-center bg-cover"
+	style="background-image: url('/food-placeholder.webp');"
+>
+	<a
+		href="/"
+		class="absolute top-0 letf-0 m-4 p-2 transition-all text-white hover:text-black hover:bg-white rounded-full"
+	>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
@@ -28,14 +48,26 @@
 		<h1 class="text-3xl font-bold">{recipe?.title}</h1>
 		<hr class="mt-4" />
 	</div>
-	<div class="flex flex-row gap-4 text-center mx-auto md:mx-0">
-		<div class="bg-blue-100 rounded-xl p-4 w-[120px] shadow-sm">
-			<p>Préparation</p>
-			<p class="font-bold">{recipe?.prepTime} min</p>
-		</div>
-		<div class="bg-red-100 rounded-xl p-4 w-[120px] shadow-sm">
-			<p>Cuisson</p>
-			<p class="font-bold">{recipe?.cookTime} min</p>
+	<div class="flex flex-col gap-8 text-center mx-auto md:mx-0">
+		{#if recipe?.tags}
+			<div class="flex flex-wrap gap-4">
+				{#each recipe?.tags as tag}
+					<span class="tag {getTagClass(tag)}">{getTagLabel(tag)}</span>
+				{/each}
+			</div>
+		{/if}
+		<div class="flex flex-row gap-2 text-center mx-auto md:mx-0">
+			<div class="bg-blue-100 rounded-xl p-4 w-[120px] shadow-sm">
+				<p>Préparation</p>
+				<p class="font-bold">{recipe?.prepTime} min</p>
+			</div>
+			<div class="bg-red-100 rounded-xl p-4 w-[120px] shadow-sm">
+				<p>Cuisson</p>
+				<p class="font-bold">{recipe?.cookTime} min</p>
+			</div>
+			<div class="bg-red-100 rounded-xl p-4 w-[120px] shadow-sm flex items-center justify-center">
+				<img src={getCookTypeIcon(recipe?.cookType)} alt={recipe?.cookType} class="w-10 h-10" />
+			</div>
 		</div>
 	</div>
 	<hr class="" />

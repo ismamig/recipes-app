@@ -31,7 +31,8 @@ export const createRecipe = async (payload: any) => {
 			cookTime: payload.cookTime,
 			ingredients: payload.ingredients as Prisma.JsonArray,
 			steps: payload.steps as Prisma.JsonArray,
-			tags: payload.tags
+			tags: payload.tags,
+			cookType: payload.cookType
 		}
 	});
 };

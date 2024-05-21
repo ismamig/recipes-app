@@ -1,23 +1,10 @@
 <script lang="ts">
 	import MultiSelect from '$lib/components/MultiSelect.svelte';
-	import { onMount } from 'svelte';
+	import { tags } from '$lib/tags';
 
 	let ingredientsCount = 1;
 	let stepsCount = 1;
 	let selectedTags: string[] = [];
-
-	const tagOptions = [
-		{ value: '1-meat', label: 'Viande' },
-		{ value: '1-fish', label: 'Poisson' },
-		{ value: '1-veggie', label: 'Végétarien' },
-		{ value: '1-vegan', label: 'Végan' },
-		{ value: '2-starter', label: 'Entrée' },
-		{ value: '2-dish', label: 'Plat' },
-		{ value: '2-dessert', label: 'Dessert' },
-		{ value: '2-beverage', label: 'Boisson' },
-		{ value: '3-share', label: 'A partager' },
-		{ value: '3-fast', label: 'Rapide à faire' }
-	];
 
 	function handleTagChange(event) {
 		selectedTags = event.detail.selected;
@@ -67,6 +54,14 @@
 			name="cookTime"
 			class="w-full p-2 border border-gray-300 rounded-lg"
 		/>
+	</div>
+	<div class="flex flex-col gap-2">
+		<label for="cook-type">Type de cuisson</label>
+		<select name="cookType" required class="w-full p-2 border border-gray-300 rounded-lg">
+			<option value="FOUR">Four</option>
+			<option value="POELE">Poêle</option>
+			<option value="AUTRE">Autre</option>
+		</select>
 	</div>
 	<div class="flex flex-col gap-2">
 		<label for="ingredients">Ingrédients <b>(quantité, nom)</b></label>
@@ -126,7 +121,7 @@
 	</div>
 	<div>
 		<label for="tags">Tags</label>
-		<MultiSelect options={tagOptions} bind:selected={selectedTags} on:change={handleTagChange} />
+		<MultiSelect options={tags} bind:selected={selectedTags} on:change={handleTagChange} />
 	</div>
 	<input
 		type="submit"
