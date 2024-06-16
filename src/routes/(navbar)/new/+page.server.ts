@@ -24,35 +24,39 @@ export const actions = {
 			index++;
 		}
 
-        const payload = {
-					title: formData.title,
-					people: parseInt(formData.people.toString()),
-					prepTime: parseInt(formData.prepTime.toString()),
-					cookTime: parseInt(formData.cookTime.toString()),
-					ingredients,
-					steps
-				};
+		const tags = formData.tags ? formData.tags.toString().split(',') : [];
 
-		console.log(payload);
+		const payload = {
+			title: formData.title,
+			people: parseInt(formData.people.toString()),
+			prepTime: parseInt(formData.prepTime.toString()),
+			cookTime: parseInt(formData.cookTime.toString()),
+			cookType: formData.cookType,
+			ingredients,
+			steps,
+			tags
+		};
 
-        try {
-            await createRecipe(payload);
-            console.log('Recipe created')
-        } catch (error) {
-            console.log(error)
-            return {
-                status: 500,
-                body: {
-                    message: 'Failed to create recipe'
-                }
-            }
-        }
+		console.log(payload)
 
-        return {
-            status: 200,
-            body: {
-                message: 'Recipe created'
-            }
-        }
+		try {
+			await createRecipe(payload);
+			console.log('Recipe created');
+		} catch (error) {
+			console.log(error);
+			return {
+				status: 500,
+				body: {
+					message: 'Failed to create recipe'
+				}
+			};
+		}
+
+		return {
+			status: 200,
+			body: {
+				message: 'Recipe created'
+			}
+		};
 	}
 };

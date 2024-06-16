@@ -11,3 +11,9 @@ html, body {
   font-style: normal;
   background-color: #fafafa;
 }
+
+@layer components {
+  .tag {
+    @apply text-base font-bold text-gray-500 px-2 py-2 rounded-xl shadow-sm;
+  }
+}
